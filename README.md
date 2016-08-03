@@ -5,14 +5,14 @@
 2. Make the web page on point 1 responsive prohibited using any responsive CSS framework such as Bootstrap, Foundation or 960 Grid.
 
 3. Make the very sophisticated table module from the data source datatable.json. The table display only this following column:
-* company_name
-* quarter_ending
-* sales
-* sales_yoy_pct
-* earnings
-* earnings_yoy_pct
-* ebitda
-* ebitda_margin
-* net_profit_margin
+=> company_name
+=> quarter_ending
+=> sales
+=> sales_yoy_pct
+=> earnings
+=> earnings_yoy_pct
+=> ebitda
+=> ebitda_margin
+=> net_profit_margin
 and only display 15 records and have the ability to go to the first and last page and also the page number.
 The table also has the ability to sort by company name, country (hidden) and sector (hidden).

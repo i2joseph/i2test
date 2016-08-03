@@ -4,7 +4,7 @@
 
 2. Make the responsive page on point 1 and prohibited using any responsive CSS frameworks such as Bootstrap, Foundation, 960 Grid and other. At least three responsive screens: web, tablet and phone.
 
-3. Make the very sophisticated table module from the data source table.json. It can be configured to display 15 or n records at the time. In addition of that, the table has the ability to go to first and last page and different page and able to search by certain fields. The table columns needed below and the hidden column means it’s outputting but the user can’t see. The searchable column means that user can type any of the value of this column and it’s resulting the record.
+3. Make the very sophisticated table module from the data source table.json. It can be configured to display 15 or n records at the time. In addition of that, the table has the ability to go to first, last and different any pages and able to search by certain fields. The table columns needed below.
 	1. company_name (searchable)
 	2. quarter_ending 
 	3. sales

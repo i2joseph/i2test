@@ -17,9 +17,10 @@
 	10. Country (hidden, searchable)
 	11. Sector (hidden, searchable)
 
-For the test number 1 and 2, the comp is only for your reference. Absolutely you can make your own judgment how to positioning each component, the font size, color, font style and etc. The most importantly is the radar graph highlighted topic need to be moving topic-by-topic every 8 sec and the news section is refreshing accordingly. Do as pretty as you can. Think that you present this page to your client. 
+For the test number 1 and 2, the comp is only for your reference. Absolutely you can make your own judgment how to positioning each component, the font size, color, font style and etc. The most importantly is the radar graph highlighted topic need to be moving topic-by-topic every 8 sec and the news section is refreshing accordingly. Do as pretty as you can. Think that you present this page to your client. You can use any javascript graph modules that you are most familiar with.
 
 For the test number 3, you can use bootstrap or any CSS framework. What we want to see here is the robustness and scalability of the component. 
 
-You can use any javascript frameworks that you are most familiar with.
+You can use any javascript frameworks that you are most familiar with. 
 
+Any questions, please don't hesitate to bug me.

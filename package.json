@@ -1,0 +1,22 @@
+{
+  "name": "i2test",
+  "version": "1.0.0",
+  "description": "1. Inside the source folder, you will find the comp.png. Please make a web page as similar as possible to this comp which generate from the JSON data source called industryintel.json. The page has a dynamic component which every 8 seconds, the highlighted radar topic is moving forward from one topic to the other. While the highlighted topic is moving, so do the Latest News content is refreshing. The latest news title has to be synced with the current highlighted radar topic.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i2joseph/i2test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i2joseph/i2test/issues"
+  },
+  "homepage": "https://github.com/i2joseph/i2test#readme",
+  "dependencies": {
+    "node": "0.0.0"
+  }
+}

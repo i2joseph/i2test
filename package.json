@@ -1,0 +1,37 @@
+{
+  "name": "i2test",
+  "version": "1.0.0",
+  "description": "1. Inside the source folder, you will find the comp.png. Please make a web page as similar as possible to this comp which generate from the JSON data source called industryintel.json. The page has a dynamic component which every 8 seconds, the highlighted radar topic is moving forward from one topic to the other. While the highlighted topic is moving, so do the Latest News content is refreshing. The latest news title has to be synced with the current highlighted radar topic.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i2joseph/i2test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i2joseph/i2test/issues"
+  },
+  "homepage": "https://github.com/i2joseph/i2test#readme",
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.16.4",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.1.0",
+    "webpack": "^1.13.2"
+  }
+}

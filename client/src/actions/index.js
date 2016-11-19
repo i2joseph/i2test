@@ -24,9 +24,9 @@ export const getIntel = (counter) => {
       })
 
       // recurse every 8 seconds
-      setTimeout(() => {
-        updateNews(allNews, int + 1);
-      }, 8000);
+      // setTimeout(() => {
+      //   updateNews(allNews, int + 1);
+      // }, 8000);
     }
 
     // GET intel here

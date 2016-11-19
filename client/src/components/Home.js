@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// import TrendingTopics from './TrendingTopic';
+import TrendingTopics from './TrendingTopics';
 import LatestNews from './LatestNews'
 import { getIntel } from '../actions/index';
 
@@ -16,12 +16,17 @@ class Home extends Component {
     return (
       <div>
         react app
-        <LatestNews />
+        <TrendingTopics id="radar" />
       </div>
     )
   }
 };
 
+/************ component placeholder *************/
+
+        // <LatestNews />
+
+/***************************/
 
 const mapStateToProps = (state) => {
   // console.log("CURRENTNEWS: ", state.currentNews.currentNews)

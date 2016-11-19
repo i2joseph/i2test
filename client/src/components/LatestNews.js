@@ -1,25 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const LatestNews = (props) => {
-  return (
-    <div>
-      <h1>
-        {props.topic ? props.topic + " " + "Latest News" : null}
-      </h1>
+import ArticleList from './ArticleList'
 
-      <h2>
-        {props.counter ? "COUNTER: " + props.counter : "COUNTER: 0"}
-      </h2>
+class LatestNews extends Component {
 
+  renderList() {
+    if(!this.props.currentNews) {
+      return (
+        <div>
+        </div>
+      )
+    }
+    return this.props.currentNews.articles.map((eachArticle) => {
+      // console.log("ARTICLES: ", eachArticle.context_source)
+      return (
+        <ArticleList 
+          key={eachArticle.title}
+          title={eachArticle.title}
+          source={eachArticle.context_source}
+          date={eachArticle.context_date}
+        />
+      )
+    })
+  }
+
+  render() {
+    return (
       <div>
-        {props.articles ? props.articles[0].title : null}
-      </div>
+        <h1>
+          {this.props.currentNews ? this.props.currentNews.topic : null}
+        </h1>
 
-      <div>
-        {props.articles ? props.articles[0].context_source + " " + props.articles[0].context_date : null}
+        <h2>
+          {this.props.currentNewsCounter ? "COUNTER: " +  this.props.currentNewsCounter : "COUNTER: 0"}
+        </h2>
+
+        <div>
+          {this.renderList()}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default LatestNews;
+
+        // <div>
+        //   {props.articles ? props.articles[0].title : null}
+        // </div>
+
+        // <div>
+        //   {props.articles ? props.articles[0].context_source + " " + props.articles[0].context_date : null}
+        // </div>
+
+const mapStateToProps = (state) => {
+  return {
+    currentNews: state.currentNews.currentNews,
+    currentNewsCounter: state.currentNews.newsCounter
+  }
+}
+
+export default connect(mapStateToProps)(LatestNews);

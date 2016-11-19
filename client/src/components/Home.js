@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+// import TrendingTopics from './TrendingTopics';
 import TrendingTopics from './RadarChart';
 import TrendingCompanies from './RadarChart';
 import LatestNews from './LatestNews'
@@ -51,34 +52,7 @@ class Home extends Component {
 
     return (
       <div>
-        <div>
-        <TrendingTopics 
-            topicsLabel={topicsLabelList}
-            topicsData={topicsDataList}
-            backgroundColor={'rgba(255, 0, 0, 0.2)'}
-            borderColor={'rgba(255, 0, 0, 1)'}
-            pointBackgroundColor={'rgba(255, 0, 0, 1)'}
-            pointBorderColor={'#fff'}
-            pointHoverBackgroundColor={'#fff'}
-            pointHoverBorderColor={'rgba(255, 0, 0, 1)'}
-            min={-1}
-            max={9}
-          />
-        </div>
-        <div>
-           <TrendingCompanies 
-            topicsLabel={companiesLabelList}
-            topicsData={companiesDataList}
-            backgroundColor={'rgba(0, 0, 255, 0.2)'}
-            borderColor={'rgba(0, 0, 255, 1)'}
-            pointBackgroundColor={'rgba(0, 0, 255, 1)'}
-            pointBorderColor={'#fff'}
-            pointHoverBackgroundColor={'#fff'}
-            pointHoverBorderColor={'rgba(0, 0, 255, 1)'}
-            min={-1}
-            max={5}
-          />
-        </div>
+        react app
       </div>
     )
   }
@@ -99,6 +73,19 @@ class Home extends Component {
         //   pointHoverBorderColor={'rgba(255, 0, 0, 1)'}
         //   min={-1}
         //   max={9}
+        // />
+        // 
+        // <TrendingCompanies 
+        //   topicsLabel={companiesLabelList}
+        //   topicsData={companiesDataList}
+        //   backgroundColor={'rgba(0, 0, 255, 0.2)'}
+        //   borderColor={'rgba(0, 0, 255, 1)'}
+        //   pointBackgroundColor={'rgba(0, 0, 255, 1)'}
+        //   pointBorderColor={'#fff'}
+        //   pointHoverBackgroundColor={'#fff'}
+        //   pointHoverBorderColor={'rgba(0, 0, 255, 1)'}
+        //   min={-1}
+        //   max={5}
         // />
 
 /***************************/

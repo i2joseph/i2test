@@ -33,7 +33,8 @@
 //     let data = {
 //       labels: labelList,
 //       datasets: [
-//         {
+//         { 
+//           label: this.props.currentNews ? this.props.currentNews.topic : null,
 //           backgroundColor: 'rgba(255, 0, 0, 0.2)',
 //           borderColor: 'rgba(255, 0, 0, 1)',
 //           pointBackgroundColor: 'rgba(255, 0, 0, 1)',
@@ -48,7 +49,7 @@
 //     return (
 //       <Radar id="radar1" data={data} width={500} height={500} options={{
 //         legend: {
-//           display: false
+//           display: {true}
 //         },
 //         scale: {
 //           ticks: {
@@ -72,6 +73,7 @@
 
 // const mapStateToProps = (state) => {
 //   return {
+//     currentNews: state.currentNews.currentNews,
 //     allTopics: state.allTopics.allTopics
 //   }
 // }

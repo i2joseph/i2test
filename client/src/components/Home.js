@@ -3,12 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Topic from './Topic';
+import LatestNews from './LatestNews'
 import { getIntel } from '../actions/index';
 
 class Home extends Component {
 
   componentWillMount() {
-    this.props.getIntel(this.props.currentNewsCounter + 1 ? this.props.currentNewsCounter : 0);
+    this.props.getIntel(this.props.currentNewsCounter ? this.props.currentNewsCounter : 0);
   }
 
   component
@@ -16,10 +17,11 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1>current news</h1>
-        <p>{this.props.currentNews ? this.props.currentNews.topic : null}</p>
-        <h1>counter</h1>
-        <p>{this.props.currentNews ? this.props.currentNewsCounter : null}</p>
+        <LatestNews 
+          topic={this.props.currentNews ? this.props.currentNews.topic : null}
+          articles={this.props.currentNews ? this.props.currentNews.articles : null}
+          counter={this.props.currentNews ? this.props.currentNewsCounter : null}
+        />
       </div>
     )
   }
@@ -27,7 +29,6 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   console.log("CURRENTNEWS: ", state.currentNews.currentNews)
-  console.log("NEWSCOUNTER: ", state.currentNews.newsCounter)
   return {
     allTopics: state.allTopics.allTopics,
     currentNews: state.currentNews.currentNews,

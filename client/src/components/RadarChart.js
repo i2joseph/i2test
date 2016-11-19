@@ -7,7 +7,7 @@ const RadarChart = (props) => {
   let data = {
     labels: props.topicsLabel,
     datasets: [
-      {
+      { 
         backgroundColor: props.backgroundColor,
         borderColor: props.borderColor,
         pointBackgroundColor: props.pointBackgroundColor,
@@ -26,16 +26,12 @@ const RadarChart = (props) => {
       },
       scale: {
         ticks: {
-          display: true,
-          min: -1,
-          max: 9
+          min: props.min,
+          max: props.max
         }, 
         pointLabels: {
           fontSize: 12
         } 
-      },
-      tooltip: {
-        intersect: false
       },
       maintainAspectRatio: false
       }}

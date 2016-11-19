@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export const TOPICS = 'TOPICS';
-export const COMPANIES = 'COMPANIES';
+export const ALL_TOPICS = 'ALL_TOPICS';
 export const CURRENT_NEWS = 'CURRENT_NEWS';
 export const NEWS_COUNTER = 'NEWS_COUNTER';
+export const COMPANIES = 'COMPANIES';
 export const RETAIL_EMPLOYMENT = 'RETAIL_EMPLOYMENT';
 export const RETAIL_SALES = 'RETAIL_SALES';
 
@@ -39,9 +39,13 @@ export const getIntel = (counter) => {
 
       // dispatch intel to reducer here:
       dispatch({
-        type: TOPICS,
+        type: ALL_TOPICS,
         payload: response.data.topic
       });
+      dispatch({
+        type: COMPANIES,
+        payload: response.data.company
+      })
 
       // dispatch current news and news counter to reducer here:
       updateNews(response.data.topic, counter);

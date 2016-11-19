@@ -1,12 +1,12 @@
-import { ALL_TOPICS } from '../actions/index';
+import { COMPANIES } from '../actions/index';
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ALL_TOPICS : return {
+    case COMPANIES : return {
       ...state,
-      allTopics: action.payload
+      companies: action.payload
     }
     default:
       return state;

@@ -27,10 +27,15 @@ const RetailEmployment = (props) => {
         },
         maintainAspectRatio: false,
         scales: {
+          
           xAxes: [{
             stacked: true
           }],
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Thousands'
+            },
             stacked: true
           }]
         }

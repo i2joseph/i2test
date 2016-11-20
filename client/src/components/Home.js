@@ -71,6 +71,7 @@ class Home extends Component {
     return dataReformat;
   }
 
+/******************** LINE CHART ********************/
 
   render() {
 
@@ -123,6 +124,10 @@ class Home extends Component {
         //   pointHoverBorderColor={'rgba(0, 0, 255, 1)'}
         //   min={-1}
         //   max={5}
+        // />
+
+        // <RetailEmployment
+        //   datasets={employmentDatasets}
         // />
 
 /***************************/

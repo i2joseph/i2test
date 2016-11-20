@@ -50,6 +50,10 @@ export const getIntel = (counter) => {
         type: RETAIL_EMPLOYMENT,
         payload: response.data.retail_employment
       });
+      dispatch({
+        type: RETAIL_SALES,
+        payload: response.data.retail_sales
+      })
 
       // dispatch current news and news counter to reducer here:
       updateNews(response.data.topic, counter);

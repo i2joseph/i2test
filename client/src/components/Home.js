@@ -7,6 +7,7 @@ import TrendingTopics from './RadarChart';
 import TrendingCompanies from './RadarChart';
 import LatestNews from './LatestNews'
 import RetailEmployment from './RetailEmployment';
+import RetailSales from './RetailSales';
 import { getIntel } from '../actions/index';
 
 class Home extends Component {
@@ -72,6 +73,28 @@ class Home extends Component {
   }
 
 /******************** LINE CHART ********************/
+  getLineLabels(data) {
+    if(!data) {
+      return [];
+    }
+
+    let labelsArr = data.data[0].map((eachData) => {
+      return " ";
+    })
+    //119
+    //12
+
+    let year = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+
+    for(let i = 0; i < 11; i++) {
+      // let year = 2006;
+      labelsArr[Math.ceil(i * 11.7)] = year[i];
+    }
+
+    return labelsArr;
+  }
+
+
 
   render() {
 
@@ -83,13 +106,18 @@ class Home extends Component {
 
     let employmentDatasets = this.getBarDatasets(this.props.retailEmployment);
 
-    console.log("EMPLOYMENT: ", employmentDatasets);
+    let salesLabels = this.getLineLabels(this.props.retailSales);
+
+    let salesData = this.props.retailSales ? this.props.retailSales.data[0] : []
+
+    // console.log("LENGTH: ", this.props.retailSales ? this.props.retailSales.data[0] : null)
 
     return (
       <div>
         react app
-        <RetailEmployment
-          datasets={employmentDatasets}
+        <RetailSales
+          labels={salesLabels}
+          data={salesData}
         />
       </div>
     )
@@ -138,7 +166,8 @@ const mapStateToProps = (state) => {
   return {
     allTopics: state.allTopics.allTopics,
     companies: state.companies.companies,
-    retailEmployment: state.retailEmployment.retailEmployment
+    retailEmployment: state.retailEmployment.retailEmployment,
+    retailSales: state.retailSales.retailSales
   };
 };
 

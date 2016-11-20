@@ -27,7 +27,6 @@ const RetailEmployment = (props) => {
         },
         maintainAspectRatio: false,
         scales: {
-          
           xAxes: [{
             stacked: true
           }],
@@ -42,6 +41,6 @@ const RetailEmployment = (props) => {
       }}
     />
   )
-}
+};
 
 export default RetailEmployment;

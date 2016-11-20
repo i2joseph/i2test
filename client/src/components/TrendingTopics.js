@@ -37,10 +37,7 @@
 //           label: this.props.currentNews ? this.props.currentNews.topic : null,
 //           backgroundColor: 'rgba(255, 0, 0, 0.2)',
 //           borderColor: 'rgba(255, 0, 0, 1)',
-//           pointBackgroundColor: 'rgba(255, 0, 0, 1)',
-//           pointBorderColor: '#fff',
-//           pointHoverBackgroundColor: '#fff',
-//           pointHoverBorderColor: 'rgba(255, 0, 0, 1)',
+//           pointBackgroundColor: 'rgb(255, 0, 0)',
 //           data: dataList
 //         }
 //       ]
@@ -48,6 +45,12 @@
 
 //     return (
 //       <Radar id="radar1" data={data} width={500} height={500} options={{
+//         elements: {
+//           point: {
+//             radius: 2,
+//             hoverRadius: 2
+//           }
+//         },
 //         legend: {
 //           display: {true}
 //         },
@@ -60,9 +63,6 @@
 //           pointLabels: {
 //             fontSize: 12
 //           } 
-//         },
-//         tooltip: {
-//           intersect: false
 //         },
 //         maintainAspectRatio: false
 //         }}

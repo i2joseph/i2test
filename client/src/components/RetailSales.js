@@ -26,11 +26,11 @@ const RetailSales = (props) => {
   };
 
   return (
-    <div className="line">
+    <div>
           <Line
             data={data}
             width={100}
-            height={100}
+            height={500}
             options={{
               tooltips: {
                 enabled: false

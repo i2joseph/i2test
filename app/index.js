@@ -1,9 +1,9 @@
 window.onload = function () {
-  var radar1Label = [];
-  var radar1Data = [];
+  var radar1Topics = [];
+  var radar1TopicData = [];
 
-  var radar2Label = [];
-  var radar2Data = [];
+  var radar2Companies = [];
+  var radar2CompanyData = [];
 
   $.ajax({
     url:'http://localhost:3000/industryintel',
@@ -11,6 +11,33 @@ window.onload = function () {
     contentType:'application/json',
     success:function(data){
       console.log('i2',data);
+
+      data.topic.forEach(function(topic){
+        for (var key in topic){
+          if(key === 'topic'){
+            radar1Topics.push(topic[key]);
+          } else if (key === 'totalarticles'){
+            radar1TopicData.push(topic[key]);
+          }
+        }
+      });  
+
+      // console.log('radar1Topics',radar1Topics);
+      // console.log('radar1TopicData',radar1TopicData);
+
+      data.company.forEach(function(company){
+        for (var key in company){
+          if(key === 'company'){
+            radar2Companies.push(company[key]);
+          } else if (key === 'totalarticles'){
+            radar2CompanyData.push(company[key]);
+          }
+        }
+      });
+
+      // console.log('radar2Companies',radar2Companies);
+      // console.log('radar2CompanyData',radar2CompanyData);
+
     },
     error:function(err){
       console.log('error ', err);
@@ -33,27 +60,17 @@ var ctx = document.getElementById("radar1");
 var topics = new Chart(ctx, {
     type: 'radar',
     data: {
-    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    labels: radar1Topics,
     datasets: [
         {
             label: "My First dataset",
-            backgroundColor: "rgba(179,181,198,0.2)",
-            borderColor: "rgba(179,181,198,1)",
-            pointBackgroundColor: "rgba(179,181,198,1)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(179,181,198,1)",
-            data: [65, 59, 90, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
             backgroundColor: "rgba(255,99,132,0.2)",
             borderColor: "rgba(255,99,132,1)",
             pointBackgroundColor: "rgba(255,99,132,1)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(255,99,132,1)",
-            data: [28, 48, 40, 19, 96, 27, 100]
+            data: radar1TopicData
         }
     ]
 },
@@ -72,7 +89,7 @@ var ctx2 = document.getElementById("radar2");
 var companies = new Chart(ctx2, {
     type: 'radar',
     data: {
-    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    labels: radar2Companies,
     datasets: [
         {
             label: "My First dataset",
@@ -82,17 +99,7 @@ var companies = new Chart(ctx2, {
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(179,181,198,1)",
-            data: [65, 59, 90, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
-            pointBackgroundColor: "rgba(255,99,132,1)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(255,99,132,1)",
-            data: [28, 48, 40, 19, 96, 27, 100]
+            data: radar2CompanyData
         }
     ]
 },

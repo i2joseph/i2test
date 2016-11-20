@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
   return {
     currentNews: state.currentNews.currentNews,
     currentNewsCounter: state.currentNews.newsCounter
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(LatestNews);

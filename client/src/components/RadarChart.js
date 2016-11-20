@@ -39,4 +39,4 @@ const RadarChart = (props) => {
   )
 }
 
-export default RadarChart
+export default RadarChart;

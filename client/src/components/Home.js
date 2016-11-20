@@ -6,39 +6,69 @@ import { connect } from 'react-redux';
 import TrendingTopics from './RadarChart';
 import TrendingCompanies from './RadarChart';
 import LatestNews from './LatestNews'
+import RetailEmployment from './RetailEmployment';
 import { getIntel } from '../actions/index';
 
 class Home extends Component {
 
+  // fetch all intel while passing current news counter as parameter to acquire current news to display
   componentWillMount() {
     this.props.getIntel(this.props.currentNewsCounter ? this.props.currentNewsCounter : 0);
   }
 
+/******************** RADAR CHART ********************/
+
+  // list all topics in array
   getTopicsLabelList(data) {
     if(!data) {
       return [];
     }
     return data.map((eachData) => {
       return eachData.topic;
-    })
+    });
   }
 
-  getDataList(data) {
-    if(!data) {
-      return [];
-    }
-    return data.map((eachData) => {
-      return eachData.totalarticles;
-    })
-  }
-
+  // list all companies in array
   getCompaniesLabelList(data) {
     if(!data) {
       return [];
     }
     return data.map((eachData) => {
       return eachData.company;
+    });
+  }
+
+  // list all data info (totalarticles) in an array (topics & companies)
+  getDataList(data) {
+    if(!data) {
+      return [];
+    }
+    return data.map((eachData) => {
+      return eachData.totalarticles;
+    });
+  }
+
+/******************** BAR CHART ********************/
+  getBarDatasets(data) {
+    if(!data) {
+      return [];
+    }
+
+    let backgroundColor = ['rgb(204, 204, 204)', 'rgb(181, 208, 238)', 'rgb(247, 210, 171)', 'rgb(206,235,165)', 'rgb(255, 165, 67)'];
+
+    let dataReformat = data.map((eachData) => {
+      return {
+        type: 'bar',
+        label: eachData.shortname,
+        data: [eachData.prv_yr, eachData.prv_val, eachData.val],
+      };
     })
+
+    for(let i = 0; i < dataReformat.length; i++) {
+      dataReformat[i].backgroundColor = backgroundColor[i];
+    }
+
+    return dataReformat;
   }
 
 
@@ -50,9 +80,16 @@ class Home extends Component {
     let companiesLabelList = this.getCompaniesLabelList(this.props.companies);
     let companiesDataList = this.getDataList(this.props.companies);
 
+    let employmentDatasets = this.getBarDatasets(this.props.retailEmployment);
+
+    console.log("EMPLOYMENT: ", employmentDatasets);
+
     return (
       <div>
         react app
+        <RetailEmployment
+          datasets={employmentDatasets}
+        />
       </div>
     )
   }
@@ -95,12 +132,13 @@ const mapStateToProps = (state) => {
   // console.log("COMPANIES: ", state.companies.companies)
   return {
     allTopics: state.allTopics.allTopics,
-    companies: state.companies.companies
-  }
-}
+    companies: state.companies.companies,
+    retailEmployment: state.retailEmployment.retailEmployment
+  };
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ getIntel }, dispatch);
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

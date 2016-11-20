@@ -21,13 +21,13 @@ export const getIntel = (counter) => {
       dispatch({
         type: NEWS_COUNTER,
         payload: nthNews
-      })
+      });
 
       // recurse every 8 seconds
       // setTimeout(() => {
       //   updateNews(allNews, int + 1);
       // }, 8000);
-    }
+    };
 
     // GET intel here
     return axios({
@@ -45,10 +45,14 @@ export const getIntel = (counter) => {
       dispatch({
         type: COMPANIES,
         payload: response.data.company
-      })
+      });
+      dispatch({
+        type: RETAIL_EMPLOYMENT,
+        payload: response.data.retail_employment
+      });
 
       // dispatch current news and news counter to reducer here:
       updateNews(response.data.topic, counter);
     })
-  }
-}
+  };
+};

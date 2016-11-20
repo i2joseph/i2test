@@ -75,7 +75,7 @@
 //   return {
 //     currentNews: state.currentNews.currentNews,
 //     allTopics: state.allTopics.allTopics
-//   }
-// }
+//   };
+// };
 
 // export default connect(mapStateToProps)(TrendingTopics);

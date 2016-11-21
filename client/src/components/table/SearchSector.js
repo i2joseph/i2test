@@ -39,7 +39,7 @@ class SearchSector extends Component {
 const mapStateToProps = (state) => {
   return {
     sectorList: state.search.sector,
-    searchSector: state.searchSector.searchSector,
+    searchSector: state.searchSector.searchSector
   }
 }
 

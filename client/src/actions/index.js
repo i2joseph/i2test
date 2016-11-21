@@ -91,10 +91,7 @@ export const getTableData = () => {
     })
     .then((response) => {
       console.log("TABLE RESPONSE: ", response.data[0]);
-      dispatch({
-        type: TABLE_DATA,
-        payload: response.data
-      });
+      
 
       //populate search options
       let companyList = [];
@@ -166,6 +163,10 @@ export const searchTable = (company, country, sector) => {
     })
     .then((response) => {
       console.log("SEARCH RESPONSE: ", response)
+      dispatch({
+        type: TABLE_DATA,
+        payload: response.data
+      });
     })
   }
 }

@@ -8,7 +8,14 @@ export const RETAIL_EMPLOYMENT = 'RETAIL_EMPLOYMENT';
 export const RETAIL_SALES = 'RETAIL_SALES';
 
 export const ACTIVE_PAGE = 'ACTIVE_PAGE';
-export const ALL_TABLE_DATA = 'ALL_TABLE_DATA';
+export const TABLE_DATA = 'TABLE_DATA';
+export const COMPANY_LIST = 'COMPANY_LIST';
+export const COUNTRY_LIST = 'COUNTRY_LIST';
+export const SECTOR_LIST = 'SECTOR_LIST';
+
+export const SEARCH_COMPANY = 'SEARCH_COMPANY';
+export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
+export const SEARCH_SECTOR = 'SEARCH_SECTOR';
 
 
 // FETCH CHART INTEL
@@ -66,8 +73,7 @@ export const getIntel = (counter) => {
 };
 
 
-// FETCH TABLE DATA
-
+// TABLE DATA
 
 export const selectPage = (pageNumber) => {
   return {
@@ -86,17 +92,83 @@ export const getTableData = () => {
     .then((response) => {
       console.log("TABLE RESPONSE: ", response.data[0]);
       dispatch({
-        type: ALL_TABLE_DATA,
+        type: TABLE_DATA,
         payload: response.data
+      });
+
+      //populate search options
+      let companyList = [];
+      let countryList = [];
+      let sectorList = [];
+
+      response.data.forEach((eachData) => {
+        if(!companyList.includes(eachData.company_name)) {
+          companyList.push(eachData.company_name);
+        }
+        if(!countryList.includes(eachData.countryList)) {
+          countryList.push(eachData.countryList);
+        }
+        if(!sectorList.includes(eachData.sector)) {
+          sectorList.push(eachData.sector);
+        }
+      });
+      companyList.sort();
+      companyList.unshift("ALL");
+
+      countryList.sort();
+      countryList.unshift("ALL");
+
+      sectorList.sort();
+      sectorList.unshift("ALL");
+
+      dispatch({
+        type: COMPANY_LIST,
+        payload: companyList
+      });
+      dispatch({
+        type: COUNTRY_LIST,
+        payload: countryList
+      });
+      dispatch({
+        type: SECTOR_LIST,
+        payload: sectorList
       })
     })
   }
 }
 
+export const searchCompany = (company) => {
+  return {
+    type: SEARCH_COMPANY,
+    payload: company
+  }
+}
 
+export const searchCountry = (country) => {
+  return {
+    type: SEARCH_COUNTRY,
+    payload: country
+  }
+}
 
+export const searchSector = (sector) => {
+  return {
+    type: SEARCH_SECTOR,
+    payload: sector
+  }
+}
 
-
+export const searchTable = (company, country, sector) => {
+  return(dispatch) => {
+    return axios({
+      method: 'GET',
+      url: `/api/table/company/${company}/country/${country}/sector/${sector}`
+    })
+    .then((response) => {
+      console.log("SEARCH RESPONSE: ", response)
+    })
+  }
+}
 
 
 

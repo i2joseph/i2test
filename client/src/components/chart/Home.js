@@ -9,9 +9,8 @@ import LatestNews from './LatestNews'
 import RetailEmployment from './RetailEmployment';
 import RetailSales from './RetailSales';
 
-import TableHome from './TableHome';
 
-import { getIntel } from '../actions/index';
+import { getIntel } from '../../actions/index';
 import { 
   getTopicsLabelList, 
   getCompaniesLabelList, 
@@ -19,7 +18,7 @@ import {
   getBarDatasets, 
   getLineLabels, 
   getLineDatasets 
-} from '../utils/helper';
+} from '../../utils/helper';
 
 class Home extends Component {
 
@@ -48,7 +47,6 @@ class Home extends Component {
     return (
       <div>
         react app
-        <TableHome />
       </div>
     )
   }

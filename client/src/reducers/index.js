@@ -6,7 +6,11 @@ import CompaniesReducer from './companies_reducer';
 import RetailEmploymentReducer from './retail_employment_reducer';
 import RetailSalesReducer from './retail_sales_reducer';
 import ActivePageReducer from './active_page_reducer';
-import AllTableDataReducer from './all_table_data_reducer';
+import TableDataReducer from './table_data_reducer';
+import SearchReducer from './search_reducer';
+import SearchCompanyReducer from './search_company_reducer';
+import SearchCountryReducer from './search_country_reducer';
+import SearchSectorReducer from './search_sector_reducer';
 
 const rootReducer = combineReducers({
   allTopics: TopicReducer,
@@ -15,7 +19,11 @@ const rootReducer = combineReducers({
   retailEmployment: RetailEmploymentReducer,
   retailSales: RetailSalesReducer,
   activePage: ActivePageReducer,
-  allTableData: AllTableDataReducer
+  tableData: TableDataReducer,
+  search: SearchReducer,
+  searchCompany: SearchCompanyReducer,
+  searchCountry: SearchCountryReducer,
+  searchSector: SearchSectorReducer
 });
 
 export default rootReducer;

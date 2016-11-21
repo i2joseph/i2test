@@ -1,3 +1,36 @@
+before starting:
+- install dependencies
+  - npm install
+- create bundle
+  - webpack -w
+- run server
+  - nodemon server/server.js
+
+http://localhost:8888/
+
+
+
+- counldn't get Trending Topics radar to highlight topics every 8s
+  - instead updates the section header with the topic
+- styling on charts didn't work out very well
+  - charts misbehaving when scaling screen size
+- table search dropdown menu doesn't close on select item
+  - click away to close dropdown menu
+
+
+
+This app was constructed using React with Redux on the front-end and Node with Express on the back-end. It is separated into two different categories: Market and Company. The Market section contains the market information in forms of Trending Topics and Trending Companies radar charts, Latest News list, Retail Sales line chart, and Retail Employment stacked column chart components, while the Company section houses the table with the financial information of various companies. 
+
+The charts are made with react-chartjs-2, which utilizes chartjs. The positioning of the components were adjusted from that of the comp to improve legibility of the data. 
+
+The table is made with React Bootstrap and has a search / filter functionality built in. The table will only initialize on search, and the search button will be disabled if any field is left empty.
+
+-MC
+
+
+
+
+
 # i2test
 
 1. Inside the source folder, you will find the comp.png. Please make a web page as similar as possible to this comp which generate from the JSON data source called industryintel.json. The page has a dynamic component which every 8 seconds, the highlighted radar topic is moving forward from one topic to the other. While the highlighted topic is moving, so do the Latest News content is refreshing. The latest news title has to be synced with the current highlighted radar topic. 

@@ -40,6 +40,10 @@ class Landing extends Component {
             <Carousel.Item>
               <img src="http://www.industryintel.com/_resources/images/slideimages/Coverflow06.jpg"/>
             </Carousel.Item>
+
+            <Carousel.Item>
+              <img src="http://www.industryintel.com/_resources/images/slideimages/Coverflow07.jpg"/>
+            </Carousel.Item>
           </Carousel>
         </div>
       </div>

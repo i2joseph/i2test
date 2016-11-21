@@ -9,19 +9,34 @@ window.onload = function () {
   var retailSalesTypes = [];
   var retailSalesData = [];
 
+  var newsFeed = [];
+  var newsFeedResult = [];
+
+  //show all news for given topic, every 8 seconds
+    //data.topic.->
+
   $.ajax({
     url:'http://localhost:3000/industryintel',
     type:'GET',
     contentType:'application/json',
-    success:function(data){
-      console.log('i2',data);
-
+    success:function(data){      
+      console.log('data',data);
       data.topic.forEach(function(topic){
         for (var key in topic){
           if(key === 'topic'){
             radar1Topics.push(topic[key]);
           } else if (key === 'totalarticles'){
             radar1TopicData.push(topic[key]);
+          } else if (key === 'articles'){
+            //arr of articles to look thru
+            newsFeed = topic[key];
+
+            newsFeed.forEach(function(article){
+              //grab title, source, and context_date
+              $('.articles').append(
+                "<ul>" + article.title + "<br>" + article.context_source + " " + article.context_date +  "</ul><br>"
+              )
+            });
           }
         }
       });  
@@ -36,9 +51,7 @@ window.onload = function () {
         }
       });
 
-      data.retail_sales.xLabel.forEach(function(year,idx){
-        data.retail_sales.xLabel[idx] = year.toString();
-      });
+      data.retail_sales.xLabel.forEach(function(year,idx){data.retail_sales.xLabel[idx] = year.toString();});
 
       retailSalesData = data.retail_sales.data;
       retailSalesTypes = data.retail_sales.key;
@@ -57,7 +70,7 @@ window.onload = function () {
     type:'GET',
     contentType:'application/json',
     success:function(data){
-      console.log('table',data);
+      //console.log('table',data);
     },
     error:function(err){
       console.log('error ', err);
@@ -205,4 +218,12 @@ window.onload = function () {
         }
     });      
     },100);
+
+  //jquery is available...
+
+  //upon having the data
+    //render a list of all articles for one topic
+
+    //once have this, figure out how to get list
+      //to update on interval.
 }

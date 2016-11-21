@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// import TrendingTopics from './TrendingTopics';
-import TrendingTopics from './RadarChart';
+import TrendingTopics from './TrendingTopics';
 import TrendingCompanies from './RadarChart';
 import LatestNews from './LatestNews';
 import Retail from './Retail';

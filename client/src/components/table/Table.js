@@ -36,7 +36,7 @@ class TableHome extends Component {
   render() {
 
     return (
-      <Table>
+      <Table striped bordered condensed hover>
         <thead>
           <tr>
             <th>Company Name</th>

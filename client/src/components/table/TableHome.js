@@ -8,12 +8,12 @@ import SearchCountry from './SearchCountry';
 import SearchSector from './SearchSector';
 import Table from './Table';
 
-import { getTableData, selectPage, searchTable } from '../../actions/index';
+import { getTableInfo, selectPage, searchTable } from '../../actions/index';
 
 class TableHome extends Component {
 
   componentWillMount() {
-    this.props.getTableData();
+    this.props.getTableInfo();
   }
 
   handleSelect(eventKey) {
@@ -99,7 +99,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getTableData, selectPage, searchTable }, dispatch);
+  return bindActionCreators({ getTableInfo, selectPage, searchTable }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableHome);

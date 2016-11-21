@@ -83,16 +83,13 @@ export const selectPage = (pageNumber) => {
 }
 
 
-export const getTableData = () => {
+export const getTableInfo = () => {
   return (dispatch) => {
     return axios({
       method: 'GET',
       url: '/api/table'
     })
     .then((response) => {
-      console.log("TABLE RESPONSE: ", response.data[0]);
-      
-
       //populate search options
       let companyList = [];
       let countryList = [];
@@ -162,7 +159,7 @@ export const searchTable = (company, country, sector) => {
       url: `/api/table/company/${company}/country/${country}/sector/${sector}`
     })
     .then((response) => {
-      console.log("SEARCH RESPONSE: ", response)
+      // console.log("SEARCH RESPONSE: ", response)
       dispatch({
         type: TABLE_DATA,
         payload: response.data

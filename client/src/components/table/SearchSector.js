@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
 
 import SearchSectorList from './SearchSectorList';
 
@@ -27,11 +27,9 @@ class SearchSector extends Component {
 
   render() {
     return (
-      <ButtonToolbar>
-        <DropdownButton id="dropdown-size-medium" title={this.props.searchSector ? this.props.searchSector : "Search Sector"} >
-          {this.renderList()}
-        </DropdownButton>
-      </ButtonToolbar>
+      <DropdownButton id="dropdown-size-medium" title={this.props.searchSector ? this.props.searchSector : "Search Sector"} >
+        {this.renderList()}
+      </DropdownButton>
     )
   }
 }

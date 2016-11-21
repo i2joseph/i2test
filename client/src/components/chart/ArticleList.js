@@ -7,9 +7,10 @@ const ArticleList = (props) => {
         {props.title}
       </div>
 
-      <div>
+      <div className="articleFooter">
         {props.source + " " + props.date}
       </div>
+      <br/>
     </div>
   )
 }

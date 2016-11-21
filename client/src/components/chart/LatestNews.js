@@ -28,13 +28,13 @@ class LatestNews extends Component {
   render() {
     return (
       <div>
-        <h1>
-          {this.props.currentNews ? this.props.currentNews.topic : null}
-        </h1>
+        <h3>
+          {this.props.currentNews ? this.props.currentNews.topic + " Latest News" : null}
+        </h3>
 
-        <h2>
+        <h4>
           {this.props.currentNewsCounter ? "COUNTER: " +  this.props.currentNewsCounter : "COUNTER: 0"}
-        </h2>
+        </h4>
 
         <div>
           {this.renderList()}

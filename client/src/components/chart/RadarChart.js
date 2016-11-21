@@ -20,22 +20,25 @@ const RadarChart = (props) => {
   };
 
   return (
-    <Radar id="radar1" data={data} width={500} height={500} options={{
-      legend: {
-        display: false
-      },
-      scale: {
-        ticks: {
-          min: props.min,
-          max: props.max
-        }, 
-        pointLabels: {
-          fontSize: 12
-        } 
-      },
-      maintainAspectRatio: false
-      }}
-    />
+    <div>
+      <h3>{props.header}</h3>
+      <Radar id="radar1" data={data} width={550} height={550} options={{
+        legend: {
+          display: false
+        },
+        scale: {
+          ticks: {
+            min: props.min,
+            max: props.max
+          }, 
+          pointLabels: {
+            fontSize: 12
+          } 
+        },
+        maintainAspectRatio: false
+        }}
+      />
+    </div>
   )
 }
 

@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 // import TrendingTopics from './TrendingTopics';
 import TrendingTopics from './RadarChart';
 import TrendingCompanies from './RadarChart';
-import LatestNews from './LatestNews'
-import RetailEmployment from './RetailEmployment';
-import RetailSales from './RetailSales';
-
+import LatestNews from './LatestNews';
+import Retail from './Retail';
 
 import { getIntel } from '../../actions/index';
 import { 
@@ -24,8 +22,15 @@ class Home extends Component {
 
   // fetch all intel while passing current news counter as parameter to acquire current news to display
   componentWillMount() {
-    this.props.getIntel(this.props.currentNewsCounter ? this.props.currentNewsCounter : 0);
+    if(!this.props.allTopics) {
+      this.props.getIntel(0);
+    }
   }
+
+  componentWillUnmount() {
+    console.log("HELLO")
+  }
+
 
   render() {
 
@@ -46,7 +51,56 @@ class Home extends Component {
 
     return (
       <div>
-        react app
+        <div id="top">
+          <div id="topics">
+            <TrendingTopics 
+              header={"Trending Topics"}
+              topicsLabel={topicsLabelList}
+              topicsData={topicsDataList}
+              backgroundColor={'rgba(255, 0, 0, 0.2)'}
+              borderColor={'rgba(255, 0, 0, 1)'}
+              pointBackgroundColor={'rgba(255, 0, 0, 1)'}
+              pointBorderColor={'#fff'}
+              pointHoverBackgroundColor={'#fff'}
+              pointHoverBorderColor={'rgba(255, 0, 0, 1)'}
+              min={-1}
+              max={9}
+            />
+          </div>
+
+          <div id="companies">
+            <TrendingCompanies 
+              header={"Trending Companies"}
+              topicsLabel={companiesLabelList}
+              topicsData={companiesDataList}
+              backgroundColor={'rgba(0, 0, 255, 0.2)'}
+              borderColor={'rgba(0, 0, 255, 1)'}
+              pointBackgroundColor={'rgba(0, 0, 255, 1)'}
+              pointBorderColor={'#fff'}
+              pointHoverBackgroundColor={'#fff'}
+              pointHoverBorderColor={'rgba(0, 0, 255, 1)'}
+              min={-1}
+              max={5}
+            />
+          </div>
+        </div>
+
+        <div id="newsContainer">
+        <div id="news">
+          <LatestNews />
+        </div>
+        </div>
+
+        <div id="retail">
+          <Retail 
+            datasets={employmentDatasets}
+            labels={salesLabels}
+            data={salesData}
+            yLabelString={"Normalized/Indexed Data"}
+          />
+        </div>
+
+
       </div>
     )
   }

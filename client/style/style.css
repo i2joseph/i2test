@@ -68,6 +68,16 @@
   margin-bottom: 40px;
 }
 
+#jumbotron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#jumbotron > .jumbotron {
+  width: 980px;
+  background-color: white;
+}
 
 #carousel {
   display: flex;

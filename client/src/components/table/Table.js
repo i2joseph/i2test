@@ -28,6 +28,13 @@ class TableHome extends Component {
           key={index}
           companyName={eachData.company_name}
           quarterEnding={eachData.quarter_ending}
+          sales={eachData.sales}
+          salesYoy={eachData.sales_yoy_pct}
+          earning={eachData.earnings}
+          earningYoy={eachData.earnings_yoy_pct}
+          ebitda={eachData.ebitda}
+          ebitdaMargin={eachData.ebitda_margin}
+          profitMargin={eachData.net_profit_margin}
         />
       )
     })
@@ -41,6 +48,13 @@ class TableHome extends Component {
           <tr>
             <th>Company Name</th>
             <th>Quarter Ending</th>
+            <th>Sales</th>
+            <th>Sales YoY %</th>
+            <th>Earning</th>
+            <th>Earning YoY %</th>
+            <th>Ebita</th>
+            <th>Ebita Margin</th>
+            <th>Net Profit Margin</th>
           </tr>
         </thead>
 

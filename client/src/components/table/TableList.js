@@ -9,6 +9,27 @@ const TableList = (props) => {
       <td>
         {props.quarterEnding}
       </td>
+      <td>
+        {props.sales}
+      </td>
+      <td>
+        {props.salesYoy}
+      </td>
+      <td>
+        {props.earning}
+      </td>
+      <td>
+        {props.earningYoy}
+      </td>
+      <td>
+        {props.ebitda}
+      </td>
+      <td>
+        {props.ebitdaMargin}
+      </td>
+      <td>
+        {props.profitMargin}
+      </td>
     </tr>
   )
 }

@@ -76,13 +76,15 @@ class TableHome extends Component {
 
     return (
       <div>
-        <div>
+        <div id="search">
           <SearchCompany />
           <SearchCountry />
           <SearchSector />
+          <Button bsStyle="primary" disabled={disableButton} onClick={() => {this.props.searchTable(this.props.searchCompany, this.props.searchCountry, this.props.searchSector)}}>SEARCH</Button>
         </div>
-        <Button bsStyle="primary" disabled={disableButton} onClick={() => {this.props.searchTable(this.props.searchCompany, this.props.searchCountry, this.props.searchSector)}}>SEARCH</Button>
-        {this.renderTable(items)}
+        <div id="table">
+          {this.renderTable(items)}
+        </div>
       </div>
     );
   }

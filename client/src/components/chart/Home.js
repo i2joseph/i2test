@@ -32,7 +32,6 @@ class Home extends Component {
 
 
   render() {
-
     // TRENDING TOPICS COMP DATA: 
     let topicsLabelList = getTopicsLabelList(this.props.allTopics);
     let topicsDataList = getDataList(this.props.allTopics);

@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div id="pagewrap">
         <div>
           <Navbar />
         </div>

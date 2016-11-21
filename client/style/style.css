@@ -54,6 +54,7 @@
   color: rgb(184, 184, 184);
 }
 
+
 /* TABLE */
 #table {
   width: 90%;
@@ -67,6 +68,9 @@
   justify-content: center;
   margin-bottom: 40px;
 }
+
+
+/* LANDING PAGE */
 
 #jumbotron {
   display: flex;
@@ -92,4 +96,47 @@ body {
   background-attachment: fixed;
 }
 
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width:959px) {
+  #pagewrap{
+    width: 100%;
+  }
+  img{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:640px) {
+  #topics {
+    float: left;
+    margin-top: 100px;
+    width: 100%;
+  }
+
+  #companies {
+    float: left;
+    margin-top: 100px;
+    width: 100%;
+  }
+
+  #retail {
+    float: left;
+    margin-top: 100px;
+    width: 100%;
+  }
+
+  #employment {
+    float: left;
+    margin-top: 100px;
+    max-height: 100%;
+  }
+}
+
+@media screen and (max-width:320px) {
+  #pagewrap{
+    width: 320px;
+  }
+}
 

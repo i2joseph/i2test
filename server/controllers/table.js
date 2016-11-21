@@ -69,5 +69,6 @@ module.exports = (() => {
       throw error
     })
   });
+
   return controller;
 })();

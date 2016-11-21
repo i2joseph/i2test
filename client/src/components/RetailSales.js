@@ -13,57 +13,50 @@ const RetailSales = (props) => {
   // console.log(props.data);
   const data = {
     labels: props.labels,
-    datasets: [
-      {
-        label: 'test',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'blue',
-        borderColor: 'blue',
-        data: props.data
-      }
-    ]
+    datasets: props.data
   };
+
+  console.log("Y: ", props.yLabelString)
 
   return (
     <div>
-          <Line
-            data={data}
-            width={100}
-            height={500}
-            options={{
-              tooltips: {
-                enabled: false
+      <Line
+        data={data}
+        width={100}
+        height={500}
+        options={{
+          tooltips: {
+            enabled: true
+          },
+          elements: {
+            point: {
+              radius: 2,
+              hoverRadius: 2
+            }
+          },
+          legend: {
+            position: 'left'
+          },
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [{
+              stacked: true
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: props.yLabelString
               },
-              elements: {
-                point: {
-                  radius: 0,
-                  hoverRadius: 0
+
+              ticks: {
+                callback: () => {
+                  return
                 }
-              },
-              legend: {
-                position: 'left'
-              },
-              maintainAspectRatio: false,
-              scales: {
-                xAxes: [{
-                  stacked: true
-                }],
-                yAxes: [{
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Thousands'
-                  },
-                  stacked: true,
-                  ticks: {
-                    callback: () => {
-                      return
-                    }
-                  }
-                }]
               }
-            }}
-          />
+            }]
+          }
+        }}
+      />
     </div>
   );
 };

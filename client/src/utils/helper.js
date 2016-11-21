@@ -42,7 +42,6 @@ export const getBarDatasets = (data) => {
 
   let dataReformat = data.map((eachData) => {
     return {
-      type: 'bar',
       label: eachData.shortname,
       data: [eachData.prv_yr, eachData.prv_val, eachData.val],
     };
@@ -64,20 +63,39 @@ export const getLineLabels = (data) => {
 
   let labelsArr = data.data[0].map((eachData) => {
     return " ";
-  })
-  //119
-  //12
+  });
 
   let year = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
 
   let xLabelIntervai = (data.data[0].length - 1) / (year.length - 1);
-
-  console.log(data.data[0].length, xLabelIntervai);
 
   for(let i = 0; i < year.length; i++) {
     // let year = 2006;
     labelsArr[Math.ceil(i * xLabelIntervai)] = year[i];
   }
 
-    return labelsArr;
+  return labelsArr;
+}
+
+  export const getLineDatasets = (data) => {
+    if(!data) {
+      return [];
+    }
+
+    let backgroundColor = ['rgb(114, 114, 114)', 'rgb(255, 55, 82)', 'rgb(239, 247, 0)', 'rgb(81, 148, 216)', 'rgb(255, 165, 67)', 'rgb(174, 79, 173)'];
+
+    console.log(data)
+
+    return data.key.map((eachData, index) => {
+      return {
+        label: eachData,
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: backgroundColor[index],
+        borderColor: backgroundColor[index],
+        data: data.data[index]
+      };
+    });
   }
+
+

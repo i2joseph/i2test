@@ -10,7 +10,14 @@ import RetailEmployment from './RetailEmployment';
 import RetailSales from './RetailSales';
 import { getIntel } from '../actions/index';
 
-import { getTopicsLabelList, getCompaniesLabelList, getDataList, getBarDatasets, getLineLabels } from '../utils/helper';
+import { 
+  getTopicsLabelList, 
+  getCompaniesLabelList, 
+  getDataList, 
+  getBarDatasets, 
+  getLineLabels, 
+  getLineDatasets 
+} from '../utils/helper';
 
 class Home extends Component {
 
@@ -21,19 +28,20 @@ class Home extends Component {
 
   render() {
 
+    // TRENDING TOPICS COMP DATA: 
     let topicsLabelList = getTopicsLabelList(this.props.allTopics);
     let topicsDataList = getDataList(this.props.allTopics);
 
+    // TRENDING COMPANIES COMP DATA: 
     let companiesLabelList = getCompaniesLabelList(this.props.companies);
     let companiesDataList = getDataList(this.props.companies);
 
+    // EMPLOYMENT COMP DATA:
     let employmentDatasets = getBarDatasets(this.props.retailEmployment);
 
+    // SALES COMP DATA:
     let salesLabels = getLineLabels(this.props.retailSales);
-
-    let salesData = this.props.retailSales ? this.props.retailSales.data[0] : []
-
-    // console.log("LENGTH: ", this.props.retailSales ? this.props.retailSales.data[0] : null)
+    let salesData = getLineDatasets(this.props.retailSales);
 
     return (
       <div>
@@ -41,6 +49,7 @@ class Home extends Component {
         <RetailSales
           labels={salesLabels}
           data={salesData}
+          yLabelString={"Normalized/Indexed Data"}
         />
       </div>
     )

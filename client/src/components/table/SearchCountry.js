@@ -38,8 +38,8 @@ const mapStateToProps = (state) => {
   return {
     countryList: state.search.country,
     searchCountry: state.searchCountry.searchCountry
-  }
-}
+  };
+};
 
 
 export default connect(mapStateToProps)(SearchCountry);

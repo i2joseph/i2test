@@ -15,6 +15,6 @@ class SearchCountryList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ searchCountry }, dispatch);
-}
+};
 
 export default connect(null, mapDispatchToProps)(SearchCountryList);

@@ -46,8 +46,6 @@ export const getIntel = (counter) => {
       url: '/api/intel',
     })
     .then((response) => {
-      // console.log("RESPONSE HERE: ", response);
-
       // dispatch intel to reducer here:
       dispatch({
         type: ALL_TOPICS,
@@ -74,7 +72,6 @@ export const getIntel = (counter) => {
 
 
 // TABLE DATA
-
 export const selectPage = (pageNumber) => {
   return {
     type: ACTIVE_PAGE,
@@ -159,7 +156,6 @@ export const searchTable = (company, country, sector) => {
       url: `/api/table/company/${company}/country/${country}/sector/${sector}`
     })
     .then((response) => {
-      // console.log("SEARCH RESPONSE: ", response)
       dispatch({
         type: TABLE_DATA,
         payload: response.data
@@ -167,11 +163,3 @@ export const searchTable = (company, country, sector) => {
     })
   }
 }
-
-
-
-
-
-
-
-

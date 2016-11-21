@@ -13,7 +13,6 @@ class LatestNews extends Component {
       )
     }
     return this.props.currentNews.articles.map((eachArticle) => {
-      // console.log("ARTICLES: ", eachArticle.context_source)
       return (
         <ArticleList 
           key={eachArticle.title}
@@ -32,10 +31,6 @@ class LatestNews extends Component {
           {this.props.currentNews ? this.props.currentNews.topic + " Latest News" : null}
         </h3>
 
-        <h4>
-          {this.props.currentNewsCounter ? "COUNTER: " +  this.props.currentNewsCounter : "COUNTER: 0"}
-        </h4>
-
         <div>
           {this.renderList()}
         </div>
@@ -43,15 +38,6 @@ class LatestNews extends Component {
     )
   }
 }
-
-
-        // <div>
-        //   {props.articles ? props.articles[0].title : null}
-        // </div>
-
-        // <div>
-        //   {props.articles ? props.articles[0].context_source + " " + props.articles[0].context_date : null}
-        // </div>
 
 const mapStateToProps = (state) => {
   return {

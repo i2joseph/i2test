@@ -26,11 +26,6 @@ class Home extends Component {
     }
   }
 
-  componentWillUnmount() {
-    console.log("HELLO")
-  }
-
-
   render() {
     // TRENDING TOPICS COMP DATA: 
     let topicsLabelList = getTopicsLabelList(this.props.allTopics);
@@ -104,51 +99,7 @@ class Home extends Component {
   }
 };
 
-/************ component placeholder *************/
-
-        // <LatestNews />
-        // 
-        // <TrendingTopics 
-        //   topicsLabel={topicsLabelList}
-        //   topicsData={topicsDataList}
-        //   backgroundColor={'rgba(255, 0, 0, 0.2)'}
-        //   borderColor={'rgba(255, 0, 0, 1)'}
-        //   pointBackgroundColor={'rgba(255, 0, 0, 1)'}
-        //   pointBorderColor={'#fff'}
-        //   pointHoverBackgroundColor={'#fff'}
-        //   pointHoverBorderColor={'rgba(255, 0, 0, 1)'}
-        //   min={-1}
-        //   max={9}
-        // />
-        // 
-        // <TrendingCompanies 
-        //   topicsLabel={companiesLabelList}
-        //   topicsData={companiesDataList}
-        //   backgroundColor={'rgba(0, 0, 255, 0.2)'}
-        //   borderColor={'rgba(0, 0, 255, 1)'}
-        //   pointBackgroundColor={'rgba(0, 0, 255, 1)'}
-        //   pointBorderColor={'#fff'}
-        //   pointHoverBackgroundColor={'#fff'}
-        //   pointHoverBorderColor={'rgba(0, 0, 255, 1)'}
-        //   min={-1}
-        //   max={5}
-        // />
-
-        // <RetailEmployment
-        //   datasets={employmentDatasets}
-        // />
-        // 
-        // <RetailSales
-        //   labels={salesLabels}
-        //   data={salesData}
-        //   yLabelString={"Normalized/Indexed Data"}
-        // />
-
-/***************************/
-
 const mapStateToProps = (state) => {
-  // console.log("CURRENTNEWS: ", state.currentNews.currentNews)
-  // console.log("COMPANIES: ", state.companies.companies)
   return {
     allTopics: state.allTopics.allTopics,
     companies: state.companies.companies,

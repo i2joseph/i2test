@@ -13,6 +13,6 @@ const ArticleList = (props) => {
       <br/>
     </div>
   )
-}
+};
 
 export default ArticleList;

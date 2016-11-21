@@ -38,8 +38,7 @@ const mapStateToProps = (state) => {
   return {
     companyList: state.search.company,
     searchCompany: state.searchCompany.searchCompany
-  }
-}
-
+  };
+};
 
 export default connect(mapStateToProps)(SearchCompany);

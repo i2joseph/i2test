@@ -61,18 +61,10 @@ class TableHome extends Component {
   }
 
   render() {
-    // if(this.props.tableData) {
-    //   console.log("TABLE DATA: ", this.props.tableData);
-    //   console.log("TABLE length: ", this.props.tableData.length);
-    //   console.log("TABLE page: ", this.props.tableData.length / 15);
-    // }
-
-    // console.log("CURRENT PAGE: ", this.props.activePage);
-
     let items = this.getTotalPages(this.props.tableData);
 
+    // disable button if company, country, or sector field isn't selected
     let disableButton = !this.props.searchCompany || !this.props.searchCountry || !this.props.searchSector
-
 
     return (
       <div>

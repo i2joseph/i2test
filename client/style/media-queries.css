@@ -11,3 +11,9 @@
     margin: 20px 0;
   }
 }
+
+@media screen and (max-width: 480px) {
+  html {
+    -webkit-text-size-adjust: none;
+  }
+}

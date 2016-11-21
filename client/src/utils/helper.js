@@ -74,7 +74,6 @@ export const getLineLabels = (data) => {
   let xLabelIntervai = (data.data[0].length - 1) / (year.length - 1);
 
   for(let i = 0; i < year.length; i++) {
-    // let year = 2006;
     labelsArr[Math.ceil(i * xLabelIntervai)] = year[i];
   }
 

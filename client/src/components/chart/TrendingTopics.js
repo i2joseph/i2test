@@ -5,8 +5,6 @@ import TopicsHeader from './TopicsHeader';
 
 import { Radar }  from 'react-chartjs-2';
 
-
-
 class TrendingTopics extends Component {
 
   getLabelList() {
@@ -28,7 +26,6 @@ class TrendingTopics extends Component {
   }
 
   render() {
-    // console.log("ALLTOPICS: ", this.props.allTopics);
     let labelList = this.getLabelList();
     let dataList = this.getDataList();
 

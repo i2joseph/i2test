@@ -15,6 +15,6 @@ class SearchCompanyList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ searchCompany }, dispatch);
-}
+};
 
 export default connect(null, mapDispatchToProps)(SearchCompanyList);

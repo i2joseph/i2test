@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import RetailEmployment from './RetailEmployment';
 import RetailSales from './RetailSales';
+import RetailEmployment from './RetailEmployment';
 
 const Retail = (props) => {
   return (

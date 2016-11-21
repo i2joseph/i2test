@@ -10,7 +10,6 @@ import { Line } from 'react-chartjs-2';
 // wh & super: (174, 79, 173)
 
 const RetailSales = (props) => {
-  // console.log(props.data);
   const data = {
     labels: props.labels,
     datasets: props.data
@@ -18,7 +17,7 @@ const RetailSales = (props) => {
 
   return (
     <div>
-    <h5>Retail Sales</h5>
+      <h5>Retail Sales</h5>
       <Line
         data={data}
         width={100}

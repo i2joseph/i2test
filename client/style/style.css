@@ -69,5 +69,17 @@
 }
 
 
+#carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-image: url("lightbulb.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}
 
 

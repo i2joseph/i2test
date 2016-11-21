@@ -33,6 +33,8 @@ export const getDataList = (data) => {
 
 
 /******************** BAR CHART ********************/
+
+//set datasets for line chart
 export const getBarDatasets = (data) => {
   if(!data) {
     return [];
@@ -56,6 +58,8 @@ export const getBarDatasets = (data) => {
 
 
 /******************** LINE CHART ********************/
+
+// set x axis label for line chart
 export const getLineLabels = (data) => {
   if(!data) {
     return [];
@@ -77,25 +81,24 @@ export const getLineLabels = (data) => {
   return labelsArr;
 }
 
-  export const getLineDatasets = (data) => {
-    if(!data) {
-      return [];
-    }
-
-    let backgroundColor = ['rgb(114, 114, 114)', 'rgb(255, 55, 82)', 'rgb(239, 247, 0)', 'rgb(81, 148, 216)', 'rgb(255, 165, 67)', 'rgb(174, 79, 173)'];
-
-    console.log(data)
-
-    return data.key.map((eachData, index) => {
-      return {
-        label: eachData,
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: backgroundColor[index],
-        borderColor: backgroundColor[index],
-        data: data.data[index]
-      };
-    });
+// set datasets for line chart
+export const getLineDatasets = (data) => {
+  if(!data) {
+    return [];
   }
+
+  let backgroundColor = ['rgb(114, 114, 114)', 'rgb(255, 55, 82)', 'rgb(239, 247, 0)', 'rgb(81, 148, 216)', 'rgb(255, 165, 67)', 'rgb(174, 79, 173)'];
+
+  return data.key.map((eachData, index) => {
+    return {
+      label: eachData,
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: backgroundColor[index],
+      borderColor: backgroundColor[index],
+      data: data.data[index]
+    };
+  });
+}
 
 

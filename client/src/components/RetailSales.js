@@ -16,8 +16,6 @@ const RetailSales = (props) => {
     datasets: props.data
   };
 
-  console.log("Y: ", props.yLabelString)
-
   return (
     <div>
       <Line

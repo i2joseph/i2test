@@ -8,8 +8,10 @@ import TrendingCompanies from './RadarChart';
 import LatestNews from './LatestNews'
 import RetailEmployment from './RetailEmployment';
 import RetailSales from './RetailSales';
-import { getIntel } from '../actions/index';
 
+import TableHome from './TableHome';
+
+import { getIntel } from '../actions/index';
 import { 
   getTopicsLabelList, 
   getCompaniesLabelList, 
@@ -46,11 +48,7 @@ class Home extends Component {
     return (
       <div>
         react app
-        <RetailSales
-          labels={salesLabels}
-          data={salesData}
-          yLabelString={"Normalized/Indexed Data"}
-        />
+        <TableHome />
       </div>
     )
   }
@@ -88,6 +86,12 @@ class Home extends Component {
 
         // <RetailEmployment
         //   datasets={employmentDatasets}
+        // />
+        // 
+        // <RetailSales
+        //   labels={salesLabels}
+        //   data={salesData}
+        //   yLabelString={"Normalized/Indexed Data"}
         // />
 
 /***************************/

@@ -15,6 +15,8 @@ window.onload = function () {
   //arr of nested objects contianing the feed
   var newsFeed = [];
 
+  var tableData = [];
+
   $.ajax({
     url:'http://localhost:3000/industryintel',
     type:'GET',
@@ -110,17 +112,22 @@ window.onload = function () {
     }
   });
 
-  // $.ajax({
-  //   url:'http://localhost:3000/table',
-  //   type:'GET',
-  //   contentType:'application/json',
-  //   success:function(data){
-  //     //console.log('table',data);
-  //   },
-  //   error:function(err){
-  //     console.log('error ', err);
-  //   }
-  // });
+  $.ajax({
+    url:'http://localhost:3000/table',
+    type:'GET',
+    contentType:'application/json',
+    success:function(data){
+      console.log('table',data);
+
+      tableData = data;
+
+      //default render 15. 
+      
+    },
+    error:function(err){
+      console.log('error ', err);
+    }
+  });
 
   //setTimeout solves async issue with data gathered in get request
   setTimeout(function(){

@@ -17,6 +17,8 @@ window.onload = function () {
 
   var tableData = [];
 
+  $('.financeTable').append('hello');
+
   $.ajax({
     url:'http://localhost:3000/industryintel',
     type:'GET',
@@ -122,7 +124,7 @@ window.onload = function () {
       tableData = data;
 
       //default render 15. 
-      
+
     },
     error:function(err){
       console.log('error ', err);

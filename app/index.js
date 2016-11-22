@@ -41,9 +41,8 @@ window.onload = function () {
           }
         }
       });  
-      //now that we have this we can build the card
-      //with this.
-      console.log('NO',newsFeed);
+      //now that we have this we can build the card with this.
+      //console.log('NO',newsFeed);
 
       (function(){
         var feedIndex = 0;
@@ -222,32 +221,90 @@ window.onload = function () {
     var employmentCompare = new Chart(ctx4, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: ["Year Ago", "Prv", "Jan '16"],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: "Employment: Retail: Bldg. & Garden Supply",
+                data: [12, 19, 3],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    "gray",
+                    "gray",
+                    "gray"
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    "gray",
+                    "gray",
+                    "gray"
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "Employment: Retail: Department Stores",
+                data: [10, 11, 4],
+                backgroundColor: [
+                    "green",
+                    "green",
+                    "green"
+                ],
+                borderColor: [
+                    "green",
+                    "green",
+                    "green"
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "Employment: Retail: General Merchandise",
+                data: [13, 17, 5],
+                backgroundColor: [
+                    "orange",
+                    "orange",
+                    "orange"
+                ],
+                borderColor: [
+                    "orange",
+                    "orange",
+                    "orange"
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "Employment: Retail: Grocery Stores",
+                data: [9, 16, 7],
+                backgroundColor: [
+                    "purple",
+                    "purple",
+                    "purple"
+                ],
+                borderColor: [
+                    "purple",
+                    "purple",
+                    "purple"
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "Employment: Retail: Health, Personal Care",
+                data: [15, 10, 9],
+                backgroundColor: [
+                    "red",
+                    "red",
+                    "red"
+                ],
+                borderColor: [
+                    "red",
+                    "red",
+                    "red"
                 ],
                 borderWidth: 1
             }]
         },
         options: {
             scales: {
+                xAxes: [{
+                  stacked:true
+                }],
                 yAxes: [{
+                    stacked:true,
                     ticks: {
                         beginAtZero:true
                     }

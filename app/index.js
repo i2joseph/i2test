@@ -9,11 +9,8 @@ window.onload = function () {
   var retailSalesTypes = [];
   var retailSalesData = [];
 
+  //arr of nested objects contianing the feed
   var newsFeed = [];
-  var newsFeedResult = [];
-
-  //show all news for given topic, every 8 seconds
-    //data.topic.->
 
   $.ajax({
     url:'http://localhost:3000/industryintel',
@@ -21,25 +18,69 @@ window.onload = function () {
     contentType:'application/json',
     success:function(data){      
       console.log('data',data);
-      data.topic.forEach(function(topic){
+      data.topic.forEach(function(topic,topicIndex){
+
+        newsFeed[topicIndex] = {};
+        newsFeed[topicIndex].articles = {};
+        newsFeed[topicIndex].articles.topic = topic.topic;
+
         for (var key in topic){
           if(key === 'topic'){
             radar1Topics.push(topic[key]);
           } else if (key === 'totalarticles'){
             radar1TopicData.push(topic[key]);
           } else if (key === 'articles'){
-            //arr of articles to look thru
-            newsFeed = topic[key];
-
-            newsFeed.forEach(function(article){
+            //each article's object must be pushed into arr
+            topic[key].forEach(function(article,articleIndex){
               //grab title, source, and context_date
-              $('.articles').append(
-                "<ul>" + article.title + "<br>" + article.context_source + " " + article.context_date +  "</ul><br>"
-              )
-            });
+              newsFeed[topicIndex].articles[articleIndex] = {};
+              newsFeed[topicIndex].articles[articleIndex].description = article.title;
+              newsFeed[topicIndex].articles[articleIndex].title = article.context_source;
+              newsFeed[topicIndex].articles[articleIndex].date = article.context_date;
+            });            
           }
         }
       });  
+      //now that we have this we can build the card
+      //with this.
+      console.log('NO',newsFeed);
+
+      (function(){
+        var feedIndex = 0;
+
+        function increment(){
+          feedIndex = (feedIndex === newsFeed.length-2 ? 0 : feedIndex + 1);      
+        }
+
+        setInterval(function(){
+          //newsFeed [feedIndex] -each item has articles object
+          //that articles object has multiple objects (can iterate over)
+          var articlesObj = newsFeed[feedIndex].articles; //an object
+          var articleTopic = newsFeed[feedIndex].articles.topic;
+          //clear list before render new one
+          $('.articles').empty();
+
+          for (var key in articlesObj){ //0,1,2,3,4 - keys
+            for (var attr in articlesObj[key]){//desc/title/etc - keys
+              //console.log(articlesObj[key]); 
+
+              if(articlesObj[key].description === undefined || articlesObj[key].title === undefined || articlesObj[key].date === undefined){
+                break;
+              }
+
+              $('.articles').append(
+                '<li>' + 
+                  articlesObj[key].description + '<br>' + 
+                  articlesObj[key].title + " " + articlesObj[key].date +
+                '</li>' + '<hr>'
+              );
+              break;
+            }
+          }
+
+          increment();
+        },3000);
+      })();     
 
       data.company.forEach(function(company){
         for (var key in company){
@@ -56,26 +97,23 @@ window.onload = function () {
       retailSalesData = data.retail_sales.data;
       retailSalesTypes = data.retail_sales.key;
       retailSalesX = data.retail_sales.xLabel;
-
-      
-
     },
     error:function(err){
       console.log('error ', err);
     }
   });
 
-  $.ajax({
-    url:'http://localhost:3000/table',
-    type:'GET',
-    contentType:'application/json',
-    success:function(data){
-      //console.log('table',data);
-    },
-    error:function(err){
-      console.log('error ', err);
-    }
-  });
+  // $.ajax({
+  //   url:'http://localhost:3000/table',
+  //   type:'GET',
+  //   contentType:'application/json',
+  //   success:function(data){
+  //     //console.log('table',data);
+  //   },
+  //   error:function(err){
+  //     console.log('error ', err);
+  //   }
+  // });
 
   //setTimeout solves async issue with data gathered in get request
   setTimeout(function(){

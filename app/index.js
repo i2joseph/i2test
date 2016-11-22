@@ -9,6 +9,9 @@ window.onload = function () {
   var retailSalesTypes = [];
   var retailSalesData = [];
 
+  var employment = [];
+  var currentIndustry = [];
+
   //arr of nested objects contianing the feed
   var newsFeed = [];
 
@@ -80,6 +83,11 @@ window.onload = function () {
           increment();
         },3000);
       })();     
+
+      data.retail_employment.forEach(function(industry){        
+        currentIndustry.push([industry.prv_yr, industry.prv_val, industry.val]);        
+        //console.log('inside loop currentIndustry',currentIndustry);
+      });
 
       data.company.forEach(function(company){
         for (var key in company){
@@ -217,6 +225,8 @@ window.onload = function () {
         }
     });
 
+    console.log('currentIndustry',currentIndustry);
+
     var ctx4 = document.getElementById("multiBar");
     var employmentCompare = new Chart(ctx4, {
         type: 'bar',
@@ -224,7 +234,7 @@ window.onload = function () {
             labels: ["Year Ago", "Prv", "Jan '16"],
             datasets: [{
                 label: "Employment: Retail: Bldg. & Garden Supply",
-                data: [12, 19, 3],
+                data: currentIndustry[0],
                 backgroundColor: [
                     "gray",
                     "gray",
@@ -238,8 +248,8 @@ window.onload = function () {
                 borderWidth: 1
             },
             {
-                label: "Employment: Retail: Department Stores",
-                data: [10, 11, 4],
+                label: "currentIndustry: Retail: Department Stores",
+                data: currentIndustry[1],
                 backgroundColor: [
                     "green",
                     "green",
@@ -254,7 +264,7 @@ window.onload = function () {
             },
             {
                 label: "Employment: Retail: General Merchandise",
-                data: [13, 17, 5],
+                data: currentIndustry[2],
                 backgroundColor: [
                     "orange",
                     "orange",
@@ -269,7 +279,7 @@ window.onload = function () {
             },
             {
                 label: "Employment: Retail: Grocery Stores",
-                data: [9, 16, 7],
+                data: currentIndustry[3],
                 backgroundColor: [
                     "purple",
                     "purple",
@@ -284,7 +294,7 @@ window.onload = function () {
             },
             {
                 label: "Employment: Retail: Health, Personal Care",
-                data: [15, 10, 9],
+                data: currentIndustry[4],
                 backgroundColor: [
                     "red",
                     "red",

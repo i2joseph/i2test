@@ -130,7 +130,6 @@ window.onload = function () {
         "<th>Net Profit Margin</th>" +
         '</tr>'
       );
-      $('.financeTable').empty();
 
       //default render 15.
       tableData = data.filter(function(company, idx){
@@ -171,12 +170,14 @@ window.onload = function () {
         )
       });
 
+      console.log('tabledata',data);
+
       //all data has been loaded.
       //so we place listeners on the inputs to see
       //if user wants to change the layout of the data
       $('.numRecords').keypress(function(e){
         if(e.which === 13 && $('.numRecords').val() >= 15){
-          $('.financeTable').empty();
+          $('.financeTable').empty();          
 
         //THIS SHOULD BE MOVED TO A FUNCTION/ repeating code!bad.
         tableData = data.filter(function(company, idx){
@@ -220,10 +221,58 @@ window.onload = function () {
           console.error('minimum 15 records displayed');
         }        
       });
-      
-      $('.tableSearch').keypress('change',function(e){
-        if(e.which === 13){
 
+      $('.tableSearch').keypress('change',function(e){
+        if(e.which === 13 && $('.tableSearch').val() !== ""){
+          console.log('IT WORKS')
+
+        $('.financeTable').empty();
+        tableData = data.filter(function(company){
+          var searchAttribute = $('.searchDropdown').text();
+
+          if(searchAttribute === 'Company'){
+            //return if company match
+            return $('.tableSearch').val() === company.company_name;
+          }else if (searchAttribute === 'Country'){
+            return $('.tableSearch').val() === company.countryList;
+          }else { //sector
+            return $('.tableSearch').val() === company.sector;
+          }
+        });
+
+          tableData.forEach(function(company){
+            $('.financeTable').append(
+              '<tr>' + 
+                '<td>' + 
+                  company.company_name + 
+                '</td>' + 
+                '<td>' + 
+                  company.quarter_ending +
+                '</td>' + 
+                '<td>' + 
+                  company.sales +
+                '</td>' + 
+                '<td>' + 
+                  company.sales_yoy_pct +
+                '</td>' + 
+                '<td>' + 
+                  company.earnings +
+                '</td>' + 
+                '<td>' + 
+                  company.earnings_yoy_pct +
+                '</td>' + 
+                '<td>' + 
+                  company.ebitda +
+                '</td>' + 
+                '<td>' + 
+                  company.ebitda_margin +
+                '</td>' + 
+                '<td>' + 
+                  company.net_profit_margin +
+                '</td>' +                                                                                     
+              '</tr>'
+            )
+          }); 
         }
       });
 
@@ -435,12 +484,4 @@ window.onload = function () {
         }
     });      
     },100);
-
-  //jquery is available...
-
-  //upon having the data
-    //render a list of all articles for one topic
-
-    //once have this, figure out how to get list
-      //to update on interval.
 }

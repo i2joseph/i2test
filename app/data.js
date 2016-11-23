@@ -224,16 +224,15 @@ window.onload = function () {
 
       $('.tableSearch').keypress('change',function(e){
         if(e.which === 13 && $('.tableSearch').val() !== ""){
-          console.log('IT WORKS')
 
         $('.financeTable').empty();
         tableData = data.filter(function(company){
-          var searchAttribute = $('.searchDropdown').text();
-
-          if(searchAttribute === 'Company'){
+          var searchAttribute = $('.searchDropdown').val();
+            console.log('searchAttribute',searchAttribute);
+          if(searchAttribute === 'company'){
             //return if company match
             return $('.tableSearch').val() === company.company_name;
-          }else if (searchAttribute === 'Country'){
+          }else if (searchAttribute === 'country'){
             return $('.tableSearch').val() === company.countryList;
           }else { //sector
             return $('.tableSearch').val() === company.sector;

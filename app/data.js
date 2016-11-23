@@ -75,7 +75,7 @@ window.onload = function () {
               $('.articles').append(
                 '<li>' + 
                   articlesObj[key].description + '<br>' + 
-                  articlesObj[key].title + " " + articlesObj[key].date +
+                  '<div style="color:gray">' + articlesObj[key].title + " " + articlesObj[key].date + "</div>" +
                 '</li>' + '<hr>'
               );
               break;
@@ -117,20 +117,6 @@ window.onload = function () {
     type:'GET',
     contentType:'application/json',
     success:function(data){
-      // $('.financeHeader').append(
-      //   '<tr>' + 
-      //   "<th>Comapny Name</th>" +
-      //   "<th>Quarter Ending</th>" +
-      //   "<th>Sales</th>" +
-      //   "<th>Sales yoy %</th>" +
-      //   "<th>Earnings</th>" +
-      //   "<th>Earnings yoy %</th>" +
-      //   "<th>EBITDA</th>" +
-      //   "<th>EBITDA Margin</th>" +
-      //   "<th>Net Profit Margin</th>" +
-      //   '</tr>'
-      // );
-
       //default render 15.
       tableData = data.filter(function(company, idx){
         return idx <= 14;
@@ -182,47 +168,70 @@ window.onload = function () {
         if(e.which === 13 && $('.numRecords').val() >= 15){
           $('.financeTable').empty();          
 
-        //THIS SHOULD BE MOVED TO A FUNCTION/ repeating code!bad.
-        tableData = data.filter(function(company, idx){
-          return idx <= $('.numRecords').val();
-        });
+          //THIS SHOULD BE MOVED TO A FUNCTION/ repeating code!bad.
+          tableData = data.filter(function(company, idx){
+            return idx <= $('.numRecords').val();
+          });
 
-        tableData.forEach(function(company){
           $('.financeTable').append(
-            '<tr>' + 
-              '<td>' + 
-                (idx + 1) + 
-              '</td>' +             
-              '<td>' + 
-                company.company_name + 
-              '</td>' + 
-              '<td>' + 
-                company.quarter_ending +
-              '</td>' + 
-              '<td>' + 
-                company.sales +
-              '</td>' + 
-              '<td>' + 
-                company.sales_yoy_pct +
-              '</td>' + 
-              '<td>' + 
-                company.earnings +
-              '</td>' + 
-              '<td>' + 
-                company.earnings_yoy_pct +
-              '</td>' + 
-              '<td>' + 
-                company.ebitda +
-              '</td>' + 
-              '<td>' + 
-                company.ebitda_margin +
-              '</td>' + 
-              '<td>' + 
-                company.net_profit_margin +
-              '</td>' +                                                                                     
-            '</tr>'
-          )
-        });          
+            '<table class="table table-striped table-bordered table-hover table-responsive">' + 
+              '<tbody>' + 
+              '<thead class="thead-inverse">' + 
+              '<tr>' + 
+              "<th>#</th>" +
+              "<th>Comapny Name</th>" +
+              "<th>Quarter Ending</th>" +
+              "<th>Sales</th>" +
+              "<th>Sales yoy %</th>" +
+              "<th>Earnings</th>" +
+              "<th>Earnings yoy %</th>" +
+              "<th>EBITDA</th>" +
+              "<th>EBITDA Margin</th>" +
+              "<th>Net Profit Margin</th>" +
+              '</tr>' +
+              '</thead>' + 
+              '</tbody>' +  
+            '</table>'
+          );        
+
+          tableData.forEach(function(company, idx){
+            if(idx < $('.numRecords').val()){
+              $('.financeTable').append(
+                '<tr>' + 
+                  '<td>' + 
+                    (idx + 1) + 
+                  '</td>' +             
+                  '<td>' + 
+                    company.company_name + 
+                  '</td>' + 
+                  '<td>' + 
+                    company.quarter_ending +
+                  '</td>' + 
+                  '<td>' + 
+                    company.sales +
+                  '</td>' + 
+                  '<td>' + 
+                    company.sales_yoy_pct +
+                  '</td>' + 
+                  '<td>' + 
+                    company.earnings +
+                  '</td>' + 
+                  '<td>' + 
+                    company.earnings_yoy_pct +
+                  '</td>' + 
+                  '<td>' + 
+                    company.ebitda +
+                  '</td>' + 
+                  '<td>' + 
+                    company.ebitda_margin +
+                  '</td>' + 
+                  '<td>' + 
+                    company.net_profit_margin +
+                  '</td>' +                                                                                     
+                '</tr>'
+              )
+            }
+          });          
         } else if (e.which === 13 && $('.numRecords').val() < 15){
           console.error('minimum 15 records displayed');
         }        
@@ -231,21 +240,42 @@ window.onload = function () {
       $('.tableSearch').keypress('change',function(e){
         if(e.which === 13 && $('.tableSearch').val() !== ""){
 
-        $('.financeTable').empty();
-        tableData = data.filter(function(company){
-          var searchAttribute = $('.searchDropdown').val();
-            console.log('searchAttribute',searchAttribute);
-          if(searchAttribute === 'company'){
-            //return if company match
-            return $('.tableSearch').val() === company.company_name;
-          }else if (searchAttribute === 'country'){
-            return $('.tableSearch').val() === company.countryList;
-          }else { //sector
-            return $('.tableSearch').val() === company.sector;
-          }
-        });
+          $('.financeTable').empty();
+          tableData = data.filter(function(company){
+            var searchAttribute = $('.searchDropdown').val();
+              console.log('searchAttribute',searchAttribute);
+            if(searchAttribute === 'company'){
+              //return if company match
+              return $('.tableSearch').val() === company.company_name;
+            }else if (searchAttribute === 'country'){
+              return $('.tableSearch').val() === company.countryList;
+            }else { //sector
+              return $('.tableSearch').val() === company.sector;
+            }
+          });
 
-          tableData.forEach(function(company){
+          $('.financeTable').append(
+            '<table class="table table-striped table-bordered table-hover table-responsive">' + 
+              '<tbody>' + 
+              '<thead class="thead-inverse">' + 
+              '<tr>' + 
+              "<th>#</th>" +
+              "<th>Comapny Name</th>" +
+              "<th>Quarter Ending</th>" +
+              "<th>Sales</th>" +
+              "<th>Sales yoy %</th>" +
+              "<th>Earnings</th>" +
+              "<th>Earnings yoy %</th>" +
+              "<th>EBITDA</th>" +
+              "<th>EBITDA Margin</th>" +
+              "<th>Net Profit Margin</th>" +
+              '</tr>' +
+              '</thead>' + 
+              '</tbody>' +  
+            '</table>'
+          );          
+
+          tableData.forEach(function(company, idx){
             $('.financeTable').append(
               '<tr>' + 
                 '<td>' + 
@@ -300,7 +330,7 @@ window.onload = function () {
         labels: radar1Topics,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Trending Topics",
                 backgroundColor: "rgba(255,99,132,0.2)",
                 borderColor: "rgba(255,99,132,1)",
                 pointBackgroundColor: "rgba(255,99,132,1)",
@@ -329,7 +359,7 @@ window.onload = function () {
         labels: radar2Companies,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Trending Companies",
                 backgroundColor: "rgba(179,181,198,0.2)",
                 borderColor: "rgba(179,181,198,1)",
                 pointBackgroundColor: "rgba(179,181,198,1)",
@@ -360,7 +390,7 @@ window.onload = function () {
         labels: retailSalesX,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Retail Trends",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",

@@ -1,0 +1,37 @@
+@media (min-width:320px)  { /*phone*/ 
+  .upperLeft, .upperRight, .lowerLeft, .lowerRight, .feed {
+    display: block;
+  }
+}
+@media (min-width:600px)  { /* tablet */ 
+  .upperLeft, .upperRight, .lowerLeft, .lowerRight, .feed {
+    display: block;
+  }
+}
+
+.upperLeft {
+  float: left;
+  width: 50%
+}
+
+.upperRight {
+  float: right;
+  width: 50%
+}
+
+.lowerLeft {
+  display: inline;
+  float: left;
+  width: 50%
+}
+
+.lowerRight {
+  display: inline;
+  float: right;
+  width: 50%
+}
+
+.feed {
+  clear: both;
+  margin-top: 20px;
+}

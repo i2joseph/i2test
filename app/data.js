@@ -83,7 +83,7 @@ window.onload = function () {
           }
 
           increment();
-        },3000);
+        },8000);
       })();     
 
       data.retail_employment.forEach(function(industry){        

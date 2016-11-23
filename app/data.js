@@ -117,28 +117,31 @@ window.onload = function () {
     type:'GET',
     contentType:'application/json',
     success:function(data){
-      $('.financeHeader').append(
-        '<tr>' + 
-        "<th>Comapny Name</th>" +
-        "<th>Quarter Ending</th>" +
-        "<th>Sales</th>" +
-        "<th>Sales yoy %</th>" +
-        "<th>Earnings</th>" +
-        "<th>Earnings yoy %</th>" +
-        "<th>EBITDA</th>" +
-        "<th>EBITDA Margin</th>" +
-        "<th>Net Profit Margin</th>" +
-        '</tr>'
-      );
+      // $('.financeHeader').append(
+      //   '<tr>' + 
+      //   "<th>Comapny Name</th>" +
+      //   "<th>Quarter Ending</th>" +
+      //   "<th>Sales</th>" +
+      //   "<th>Sales yoy %</th>" +
+      //   "<th>Earnings</th>" +
+      //   "<th>Earnings yoy %</th>" +
+      //   "<th>EBITDA</th>" +
+      //   "<th>EBITDA Margin</th>" +
+      //   "<th>Net Profit Margin</th>" +
+      //   '</tr>'
+      // );
 
       //default render 15.
       tableData = data.filter(function(company, idx){
         return idx <= 14;
       });
 
-      tableData.forEach(function(company){
+      tableData.forEach(function(company, idx){
         $('.financeTable').append(
           '<tr>' + 
+            '<td>' + 
+              (idx + 1) + 
+            '</td>' +          
             '<td>' + 
               company.company_name + 
             '</td>' + 
@@ -187,6 +190,9 @@ window.onload = function () {
         tableData.forEach(function(company){
           $('.financeTable').append(
             '<tr>' + 
+              '<td>' + 
+                (idx + 1) + 
+              '</td>' +             
               '<td>' + 
                 company.company_name + 
               '</td>' + 
@@ -242,6 +248,9 @@ window.onload = function () {
           tableData.forEach(function(company){
             $('.financeTable').append(
               '<tr>' + 
+                '<td>' + 
+                  (idx + 1) + 
+                '</td>' +               
                 '<td>' + 
                   company.company_name + 
                 '</td>' + 

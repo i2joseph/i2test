@@ -8,13 +8,31 @@
       crossorigin="anonymous">
     </script>
     <script src="./data.js"></script>
-    <link rel="stylesheet" text="text/css" href="../styles/styles.css">    
+    <link rel="stylesheet" text="text/css" href="../styles/styles.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>      
   </header>
   <body>
+    # Records to display    
+    <input type="text" placeholder="enter to submit" class="numRecords">
+    Search and filter data
+    <input type="text" placeholder="enter to submit" clsas="tableSearch">
     <div>
+      <table class="financeHeader"></table>
       <table class="financeTable">
-        
+        <tr>
+          <th>Comapny Name</th>
+          <th>Quarter Ending</th>
+          <th>Sales</th>
+          <th>Sales yoy %</th>
+          <th>Earnings</th>
+          <th>Earnings yoy %</th>
+          <th>EBITDA</th>
+          <th>EBITDA Margin</th>
+          <th>Net Profit Margin</th>
+        </tr>     
       </table>
     </div>
   </body>
 </html>
+
+

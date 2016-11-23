@@ -17,8 +17,6 @@ window.onload = function () {
 
   var tableData = [];
 
-  $('.financeTable').append('hello');
-
   $.ajax({
     url:'http://localhost:3000/industryintel',
     type:'GET',
@@ -119,11 +117,116 @@ window.onload = function () {
     type:'GET',
     contentType:'application/json',
     success:function(data){
-      console.log('table',data);
+      $('.financeHeader').append(
+        '<tr>' + 
+        "<th>Comapny Name</th>" +
+        "<th>Quarter Ending</th>" +
+        "<th>Sales</th>" +
+        "<th>Sales yoy %</th>" +
+        "<th>Earnings</th>" +
+        "<th>Earnings yoy %</th>" +
+        "<th>EBITDA</th>" +
+        "<th>EBITDA Margin</th>" +
+        "<th>Net Profit Margin</th>" +
+        '</tr>'
+      );
+      $('.financeTable').empty();
 
-      tableData = data;
+      //default render 15.
+      tableData = data.filter(function(company, idx){
+        return idx <= 14;
+      });
 
-      //default render 15. 
+      tableData.forEach(function(company){
+        $('.financeTable').append(
+          '<tr>' + 
+            '<td>' + 
+              company.company_name + 
+            '</td>' + 
+            '<td>' + 
+              company.quarter_ending +
+            '</td>' + 
+            '<td>' + 
+              company.sales +
+            '</td>' + 
+            '<td>' + 
+              company.sales_yoy_pct +
+            '</td>' + 
+            '<td>' + 
+              company.earnings +
+            '</td>' + 
+            '<td>' + 
+              company.earnings_yoy_pct +
+            '</td>' + 
+            '<td>' + 
+              company.ebitda +
+            '</td>' + 
+            '<td>' + 
+              company.ebitda_margin +
+            '</td>' + 
+            '<td>' + 
+              company.net_profit_margin +
+            '</td>' +                                                                                     
+          '</tr>'
+        )
+      });
+
+      //all data has been loaded.
+      //so we place listeners on the inputs to see
+      //if user wants to change the layout of the data
+      $('.numRecords').keypress(function(e){
+        if(e.which === 13 && $('.numRecords').val() >= 15){
+          $('.financeTable').empty();
+
+        //THIS SHOULD BE MOVED TO A FUNCTION/ repeating code!bad.
+        tableData = data.filter(function(company, idx){
+          return idx <= $('.numRecords').val();
+        });
+
+        tableData.forEach(function(company){
+          $('.financeTable').append(
+            '<tr>' + 
+              '<td>' + 
+                company.company_name + 
+              '</td>' + 
+              '<td>' + 
+                company.quarter_ending +
+              '</td>' + 
+              '<td>' + 
+                company.sales +
+              '</td>' + 
+              '<td>' + 
+                company.sales_yoy_pct +
+              '</td>' + 
+              '<td>' + 
+                company.earnings +
+              '</td>' + 
+              '<td>' + 
+                company.earnings_yoy_pct +
+              '</td>' + 
+              '<td>' + 
+                company.ebitda +
+              '</td>' + 
+              '<td>' + 
+                company.ebitda_margin +
+              '</td>' + 
+              '<td>' + 
+                company.net_profit_margin +
+              '</td>' +                                                                                     
+            '</tr>'
+          )
+        });          
+        } else if (e.which === 13 && $('.numRecords').val() < 15){
+          console.error('minimum 15 records displayed');
+        }        
+      });
+      
+      $('.tableSearch').keypress('change',function(e){
+        if(e.which === 13){
+
+        }
+      });
+
 
     },
     error:function(err){
